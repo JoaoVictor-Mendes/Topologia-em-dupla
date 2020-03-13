@@ -1,0 +1,23 @@
+SWs 
+enable
+configure terminal
+hostname SW-02
+ip ssh version 2
+no ip domain-lookup
+ip domain-name 1rede.local
+crypto key generate rsa general-key modulus 1024
+enable secret JOAO*enable
+service password-encryption
+line vty 0 15
+password JOAO*vty
+transport input ssh
+login
+exit
+line console 0
+password JOAO*console
+login local
+exit
+interface vlan 1
+ip address 192.168.0.254 255.255.255.0
+end
+write
